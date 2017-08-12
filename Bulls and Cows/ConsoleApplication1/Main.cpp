@@ -1,18 +1,23 @@
 #include <iostream>
 #include <string>
 
-// Declare the functions
-void IntroduceGame();
-void GetGuessAndPrintItBack();
-
 // To make it like unreal engine code
 using FString  = std::string;
 using int32 = int;
 
+// Declare the functions
+void IntroduceGame();
+FString GetGuessAndPrintItBack();
+
 int main() 
 { 
 	IntroduceGame();
-	GetGuessAndPrintItBack();
+
+	constexpr int32 NUMBER_OF_TURNS = 8;
+	for (int32 i = 1; i <= NUMBER_OF_TURNS; i++) 
+	{
+		GetGuessAndPrintItBack();
+	}
 	return 0;
 }
 
@@ -21,9 +26,11 @@ void IntroduceGame()
 	constexpr int32 WORD_LENGTH = 5;
 	std::cout << "Welcome to bulls and cows a fun word game.\n";
 	std::cout << "Can you guess the "<< WORD_LENGTH<<" letter isogram I'm thinking of\n\n";
+
+	return;
 }
 
-void GetGuessAndPrintItBack() // Has a side-effect
+FString GetGuessAndPrintItBack() // Has a side-effect
 {
 	// Get a guess from the player
 	FString Guess = "";
@@ -33,4 +40,6 @@ void GetGuessAndPrintItBack() // Has a side-effect
 	// Print the guess back to the player
 	std::cout << "Your guess was " << Guess;
 	std::cout << "\n\n";
+
+	return Guess;
 }
