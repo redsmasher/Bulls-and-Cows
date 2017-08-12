@@ -12,6 +12,7 @@ using int32 = int;
 int main() 
 { 
 	IntroduceGame();
+	GetGuessAndPrintItBack();
 	return 0;
 }
 
@@ -24,5 +25,12 @@ void IntroduceGame()
 
 void GetGuessAndPrintItBack() // Has a side-effect
 {
+	// Get a guess from the player
+	FString Guess = "";
+	std::cout << "Enter your guess:";
+	std::getline(std::cin, Guess);
 
+	// Print the guess back to the player
+	std::cout << "Your guess was " << Guess;
+	std::cout << "\n\n";
 }
