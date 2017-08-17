@@ -7,17 +7,13 @@ using int32 = int;
 
 // Declare the functions
 void IntroduceGame();
-FString GetGuessAndPrintItBack();
+FString GetGuess();
+void PlayGame();
 
 int main() 
 { 
 	IntroduceGame();
-
-	constexpr int32 NUMBER_OF_TURNS = 8;
-	for (int32 i = 1; i <= NUMBER_OF_TURNS; i++) 
-	{
-		GetGuessAndPrintItBack();
-	}
+	PlayGame();
 	return 0;
 }
 
@@ -30,16 +26,24 @@ void IntroduceGame()
 	return;
 }
 
-FString GetGuessAndPrintItBack() // Has a side-effect
+void PlayGame() 
+{
+	// Loop through for the number of turns asking for guesses
+	constexpr int32 NUMBER_OF_TURNS = 8;
+	for (int32 i = 1; i <= NUMBER_OF_TURNS; i++)
+	{
+		FString Guess = GetGuess();
+		// Print the guess back to the player
+		std::cout << "Your guess was " << Guess;
+		std::cout << "\n\n";
+	}
+}
+
+FString GetGuess()
 {
 	// Get a guess from the player
 	FString Guess = "";
 	std::cout << "Enter your guess:";
 	std::getline(std::cin, Guess);
-
-	// Print the guess back to the player
-	std::cout << "Your guess was " << Guess;
-	std::cout << "\n\n";
-
 	return Guess;
 }
