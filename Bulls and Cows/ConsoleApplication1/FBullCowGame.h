@@ -15,6 +15,8 @@ public:
 	int32 GetMaxTries()const;
 	int32 GetCurrentTry()const;
 	bool IsGameWon()const;
+	// TODO Make a method to submit valid guess 
+		// and counting bulls and cows
 
 private:
 	// See constructor for initialiasation
