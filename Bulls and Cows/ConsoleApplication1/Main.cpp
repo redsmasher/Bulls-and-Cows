@@ -41,8 +41,8 @@ void PlayGame()
 	BCGame.Reset();
 	int32 MaxTries = BCGame.GetMaxTries();
 	// Loop through for the number of turns asking for guesses
-	// TODO Change from for to while loop once we are validating tries
-	for (int32 i = 1; i <= MaxTries; i++)
+		// WHILE the game is not running, and there are still tries remaining
+	while (!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries)
 	{
 		FString Guess = GetValidGuess(); // TODO Make loop checking valid
 

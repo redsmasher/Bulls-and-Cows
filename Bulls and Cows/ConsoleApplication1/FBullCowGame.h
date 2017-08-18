@@ -31,7 +31,7 @@ public:
 	int32 GetMaxTries()const;
 	int32 GetCurrentTry()const;
 	int32 GetHiddenWordLength()const;
-	bool IsGameWon()const;
+	bool IsGameWon();
 	
 	// Counts bulls and cows, and increases turn number
 	FBullCowCount SubmitGuess(FString Guess);
@@ -41,4 +41,5 @@ private:
 	int32 MaxTries;
 	int32 CurrentTry;
 	FString MyHiddenWord;
+	bool bIsGameWon;
 };

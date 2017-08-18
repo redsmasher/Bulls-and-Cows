@@ -7,6 +7,7 @@ FBullCowGame::FBullCowGame(){Reset();}
 int32 FBullCowGame::GetMaxTries()const {return MaxTries;}
 int32 FBullCowGame::GetCurrentTry()const {return CurrentTry;}
 int32 FBullCowGame::GetHiddenWordLength() const{return MyHiddenWord.length();}
+bool FBullCowGame::IsGameWon() { return bIsGameWon; }
 
 void FBullCowGame::Reset()
 {
@@ -41,11 +42,6 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess)
 	}
 }
 
-bool FBullCowGame::IsGameWon() const
-{
-	return false;
-}
-
 // Receives a VALID guess, and increases the turn number
 FBullCowCount FBullCowGame::SubmitGuess(FString Guess)
 {
@@ -65,10 +61,12 @@ FBullCowCount FBullCowGame::SubmitGuess(FString Guess)
 			{
 				if (HWChar == GuessCHAR) 
 				{
+					bIsGameWon = true;
 					BullCowCount.Bulls++;
 				}
 				else
 				{
+					bIsGameWon = false;
 					BullCowCount.Cows++;
 				}
 			}
