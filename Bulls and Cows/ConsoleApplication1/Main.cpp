@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "FBullCowGame.h"
 
 // To make it like unreal engine code
 using FString  = std::string;
@@ -11,6 +12,9 @@ FString GetGuess();
 void PlayGame();
 bool bAskToPlayAgain();
 
+FBullCowGame BCGame; // Instantiate a new class
+
+// The entry point for the application
 int main() 
 { 
 	bool bPlayAgain = false;
@@ -21,7 +25,7 @@ int main()
 		bPlayAgain = bAskToPlayAgain();
 	} 
 	while (bPlayAgain);
-	return 0;
+	return 0; // Exit the application
 }
 
 void IntroduceGame() 
@@ -35,9 +39,9 @@ void IntroduceGame()
 
 void PlayGame() 
 {
+	int32 MaxTries = BCGame.GetMaxTries();
 	// Loop through for the number of turns asking for guesses
-	constexpr int32 NUMBER_OF_TURNS = 8;
-	for (int32 i = 1; i <= NUMBER_OF_TURNS; i++)
+	for (int32 i = 1; i <= MaxTries; i++)
 	{
 		FString Guess = GetGuess();
 		std::cout << "Your guess was " << Guess;
@@ -48,12 +52,14 @@ void PlayGame()
 FString GetGuess()
 {
 	// Get a guess from the player
+	int32 CurrentTry = BCGame.GetCurrentTry();
 	FString Guess = "";
-	std::cout << "Enter your guess:";
+	std::cout << "Try "<< CurrentTry <<" Enter your guess:";
 	std::getline(std::cin, Guess);
 	return Guess;
 }
 
+// Ask the player if he wants to play again
 bool bAskToPlayAgain() 
 {
 	std::cout << "Do you want to play again?(y/n)";
