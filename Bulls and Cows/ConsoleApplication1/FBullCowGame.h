@@ -8,6 +8,8 @@ using FString = std::string;
 class FBullCowGame
 {
 public:
+	FBullCowGame(); // Constructor
+
 	void Reset();
 	bool CheckGuessValidity(FString Guess);
 	int32 GetMaxTries()const;
@@ -16,6 +18,6 @@ public:
 
 private:
 	// See constructor for initialiasation
-	int32 MaxTries = 10;
-	int32 CurrentTry = 1;
+	int32 MaxTries;
+	int32 CurrentTry;
 };

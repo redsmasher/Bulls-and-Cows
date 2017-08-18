@@ -39,6 +39,7 @@ void IntroduceGame()
 
 void PlayGame() 
 {
+	BCGame.Reset();
 	int32 MaxTries = BCGame.GetMaxTries();
 	// Loop through for the number of turns asking for guesses
 	for (int32 i = 1; i <= MaxTries; i++)
