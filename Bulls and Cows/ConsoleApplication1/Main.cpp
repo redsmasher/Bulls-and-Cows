@@ -9,11 +9,18 @@ using int32 = int;
 void IntroduceGame();
 FString GetGuess();
 void PlayGame();
+bool bAskToPlayAgain();
 
 int main() 
 { 
-	IntroduceGame();
-	PlayGame();
+	bool bPlayAgain = false;
+	do
+	{
+		IntroduceGame();
+		PlayGame();
+		bPlayAgain = bAskToPlayAgain();
+	} 
+	while (bPlayAgain);
 	return 0;
 }
 
@@ -33,7 +40,6 @@ void PlayGame()
 	for (int32 i = 1; i <= NUMBER_OF_TURNS; i++)
 	{
 		FString Guess = GetGuess();
-		// Print the guess back to the player
 		std::cout << "Your guess was " << Guess;
 		std::cout << "\n\n";
 	}
@@ -46,4 +52,12 @@ FString GetGuess()
 	std::cout << "Enter your guess:";
 	std::getline(std::cin, Guess);
 	return Guess;
+}
+
+bool bAskToPlayAgain() 
+{
+	std::cout << "Do you want to play again?(y/n)";
+	FString Response = "";
+	std::getline(std::cin, Response);
+	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
