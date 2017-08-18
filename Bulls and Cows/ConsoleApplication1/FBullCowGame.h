@@ -21,6 +21,7 @@ public:
 	bool CheckGuessValidity(FString Guess);
 	int32 GetMaxTries()const;
 	int32 GetCurrentTry()const;
+	int32 GetHiddenWordLength()const;
 	bool IsGameWon()const;
 	
 	// Counts bulls and cows, and increases turn number

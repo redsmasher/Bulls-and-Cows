@@ -6,6 +6,7 @@ using FString = std::string;
 FBullCowGame::FBullCowGame(){Reset();}
 int32 FBullCowGame::GetMaxTries()const {return MaxTries;}
 int32 FBullCowGame::GetCurrentTry()const {return CurrentTry;}
+int32 FBullCowGame::GetHiddenWordLength() const{	return MyHiddenWord.length();}
 
 void FBullCowGame::Reset()
 {
