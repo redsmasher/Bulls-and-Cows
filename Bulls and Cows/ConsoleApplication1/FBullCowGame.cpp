@@ -6,7 +6,7 @@ using FString = std::string;
 FBullCowGame::FBullCowGame(){Reset();}
 int32 FBullCowGame::GetMaxTries()const {return MaxTries;}
 int32 FBullCowGame::GetCurrentTry()const {return CurrentTry;}
-int32 FBullCowGame::GetHiddenWordLength() const{	return MyHiddenWord.length();}
+int32 FBullCowGame::GetHiddenWordLength() const{return MyHiddenWord.length();}
 
 void FBullCowGame::Reset()
 {
@@ -15,15 +15,30 @@ void FBullCowGame::Reset()
 	constexpr int32 MAX_TRIES = 10;
 	MaxTries = MAX_TRIES;
 
-	const FString HIDDEN_WORD = "ant";
+	const FString HIDDEN_WORD = "planet";
 	MyHiddenWord = HIDDEN_WORD;
 
 	return;
 }
 
-bool FBullCowGame::CheckGuessValidity(FString Guess)
+EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess)
 {
-	return false;
+	if (false) // If the guess isn't an isogram, return an error
+	{
+		return EGuessStatus::Not_Isogram;
+	}
+	else if(false) // If the guess isn't all lowercase, return an error
+	{
+		return EGuessStatus::Not_Lowercase;
+	}
+	else if (Guess.length() != GetHiddenWordLength()) // If the guess length is wrong. return an error
+	{
+		return EGuessStatus::Wrong_Length;
+	}
+	else 	// Otherwise, return OK
+	{
+		return EGuessStatus::OK;
+	}
 }
 
 bool FBullCowGame::IsGameWon() const

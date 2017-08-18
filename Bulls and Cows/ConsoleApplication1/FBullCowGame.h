@@ -12,13 +12,21 @@ struct FBullCowCount
 	int32 Cows = 0;
 };
 
+enum class EGuessStatus 
+{
+	OK,
+	Not_Isogram,
+	Wrong_Length,
+	Not_Lowercase
+};
+
 class FBullCowGame
 {
 public:
 	FBullCowGame(); // Constructor
 
 	void Reset();
-	bool CheckGuessValidity(FString Guess);
+	EGuessStatus CheckGuessValidity(FString Guess);
 	int32 GetMaxTries()const;
 	int32 GetCurrentTry()const;
 	int32 GetHiddenWordLength()const;
