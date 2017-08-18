@@ -11,6 +11,7 @@ void IntroduceGame();
 FString GetValidGuess();
 void PlayGame();
 bool bAskToPlayAgain();
+void SummarizeGame();
 
 FBullCowGame BCGame; // Instantiate a new class
 
@@ -53,7 +54,7 @@ void PlayGame()
 		std::cout << "\n";
 	}
 
-	// TODO Summarise game
+	SummarizeGame();
 }
 
 // Loop continually until the user gives a valid guess
@@ -93,8 +94,16 @@ FString GetValidGuess()
 // Ask the player if he wants to play again
 bool bAskToPlayAgain() 
 {
-	std::cout << "Do you want to play again?(y/n)";
 	FString Response = "";
 	std::getline(std::cin, Response);
 	return (Response[0] == 'y') || (Response[0] == 'Y');
+}
+
+void SummarizeGame() 
+{
+	if (BCGame.IsGameWon())
+	{
+		std::cout << "WELL-DONE you won!"<<"\n";
+		std::cout << "Do you want to play again?(y/n)\n";
+	}
 }

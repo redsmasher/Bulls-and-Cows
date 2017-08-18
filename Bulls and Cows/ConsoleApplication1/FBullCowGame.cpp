@@ -11,6 +11,7 @@ bool FBullCowGame::IsGameWon() { return bIsGameWon; }
 
 void FBullCowGame::Reset()
 {
+	bIsGameWon = false;
 	CurrentTry = 1;
 
 	constexpr int32 MAX_TRIES = 10;
@@ -61,15 +62,21 @@ FBullCowCount FBullCowGame::SubmitGuess(FString Guess)
 			{
 				if (HWChar == GuessCHAR) 
 				{
-					bIsGameWon = true;
 					BullCowCount.Bulls++;
 				}
 				else
 				{
-					bIsGameWon = false;
 					BullCowCount.Cows++;
 				}
 			}
+		}
+		if (BullCowCount.Bulls == HiddenWordLength) 
+		{
+			bIsGameWon = true;
+		}
+		else
+		{
+			bIsGameWon = false;
 		}
 	}
 		
